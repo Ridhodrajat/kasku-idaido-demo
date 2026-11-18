@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
 const SESSION_COOKIE_NAME = 'kasku_session';
+const DEFAULT_SESSION_SECRET = 'kasku-idaido-portfolio-demo-session-secret-key-32chars!';
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -22,9 +23,10 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
   let isAuthenticated = false;
 
-  if (token && process.env.SESSION_SECRET) {
+  if (token) {
     try {
-      const key = new TextEncoder().encode(process.env.SESSION_SECRET);
+      const secret = process.env.SESSION_SECRET || DEFAULT_SESSION_SECRET;
+      const key = new TextEncoder().encode(secret);
       const { payload } = await jwtVerify(token, key);
       isAuthenticated = Boolean(payload.auth);
     } catch {

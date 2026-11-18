@@ -85,8 +85,7 @@ export default function MasukPage() {
     startTransition(async () => {
       const res = await verifyPinAction(pinToSubmit);
       if (res.success) {
-        router.push('/');
-        router.refresh();
+        window.location.href = '/';
       } else {
         setPin('');
         if (res.isLocked && res.remainingLockSeconds) {
@@ -97,6 +96,22 @@ export default function MasukPage() {
       }
     });
   };
+
+  // Dukungan input keyboard fisik untuk desktop / laptop
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isLocked || isPending) return;
+      if (/^[0-9]$/.test(e.key)) {
+        handleKeyPress(e.key);
+      } else if (e.key === 'Backspace') {
+        handleDelete();
+      } else if (e.key === 'Escape') {
+        handleClear();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [pin, isLocked, isPending]);
 
   const formatLockTime = (secs: number) => {
     const m = Math.floor(secs / 60);
