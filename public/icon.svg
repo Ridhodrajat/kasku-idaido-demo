@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D6A4F" />
+      <stop offset="100%" stop-color="#1B4332" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#DDA15E" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#143024" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Squircle Background -->
+  <rect width="512" height="512" rx="115" fill="url(#bg)" />
+
+  <!-- Inner Soft Ring Glow -->
+  <rect x="24" y="24" width="464" height="464" rx="95" fill="none" stroke="white" stroke-opacity="0.15" stroke-width="6" />
+
+  <!-- Main Emblem Group with Shadow -->
+  <g filter="url(#shadow)">
+    <!-- Vertical stem of K -->
+    <rect x="156" y="140" width="44" height="232" rx="22" fill="#FFFFFF" />
+
+    <!-- Upper branch of K -->
+    <path d="M190 260 L310 148 C318 140 332 142 338 152 L346 164 C352 174 350 188 340 196 L238 290 Z" fill="#FFFFFF" />
+
+    <!-- Lower branch of K -->
+    <path d="M210 248 L328 356 C338 366 338 382 328 390 L316 398 C306 406 292 404 284 394 L180 286 Z" fill="#FFFFFF" />
+
+    <!-- Coin / Store Accent Circle -->
+    <circle cx="340" cy="256" r="34" fill="url(#gold)" stroke="#FFFFFF" stroke-width="8" />
+  </g>
+</svg>

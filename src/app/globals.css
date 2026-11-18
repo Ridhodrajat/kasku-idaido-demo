@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* 1. Toko: Mint / Emerald Sage */
+  --color-toko: #2D6A4F;
+  --color-toko-alt: #40916C;
+  --color-toko-soft: #E8F5EE;
+
+  /* 2. Jajan: Warm Matcha / Olive Sage */
+  --color-jajan: #606C38;
+  --color-jajan-alt: #84964B;
+  --color-jajan-soft: #F2F5E8;
+
+  /* 3. Pos Tambahan: Celadon & Eucalyptus */
+  --color-celadon: #52796F;
+  --color-celadon-soft: #EAF2F0;
+
+  /* 4. Status Kuota */
+  --color-status-aman: #2D6A4F;
+  --color-status-menipis: #C88D38;
+  --color-status-over: #BC4749;
+
+  /* 5. Tombol Utama & Aksi Catat (+) */
+  --color-aksi: #2D6A4F;
+  --color-aksi-hover: #1B4332;
+
+  /* 6. Tema Aplikasi: Pastel Cream & Soft Pale Sage */
+  --color-app-bg: #F7FAF7;
+  --color-app-text: #192E21;
+  --color-app-muted: #5C7364;
+  --color-app-line: #DFE8E0;
+
+  --shadow-aksi: 0 8px 24px -8px rgba(45, 106, 79, 0.35);
+  --shadow-card: 0 4px 20px -2px rgba(25, 46, 33, 0.05);
+}
+
+:root {
+  --background: #F7FAF7;
+  --foreground: #192E21;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  overscroll-behavior-y: none;
+}
+
+input, textarea, select {
+  user-select: text;
+}
+
+button, a, [role="button"] {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.touch-press {
+  transition: transform 100ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms ease, opacity 100ms ease;
+  will-change: transform;
+}
+.touch-press:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+.touch-press-subtle {
+  transition: transform 100ms cubic-bezier(0.2, 0, 0, 1), background-color 150ms ease;
+  will-change: transform;
+}
+.touch-press-subtle:active {
+  transform: scale(0.98);
+}
+
+.touch-bounce {
+  transition: transform 120ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+.touch-bounce:active {
+  transform: scale(0.90);
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
